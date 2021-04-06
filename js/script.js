@@ -61,15 +61,18 @@ function markProcess(idOfDuty) {
 
     let duty = getDutyById(idOfDuty);
 
-    if (duty.isDone == 0) { // !duty.isDone
+    if (!duty.isDone) { // duty.isDone == 0
         duty.do();
+
         document.getElementsByClassName("isDoneBtn")[idOfDuty].src = "/img/icon/true.png";
-        console.log(duty.isDone);
+
     } else {
         duty.undo();
         document.getElementsByClassName("isDoneBtn")[idOfDuty].src = "/img/icon/false.png";
-        console.log(duty.isDone);
+
     }
+
+    updateIsDoneInListOfDuties(duty, duty.isDone);
 
 };
 
@@ -115,4 +118,15 @@ function deleteContent(dutyId) {
     }
 
     removeFromListOfDuties(getDutyById(dutyId));
+};
+
+function updateIsDoneInListOfDuties(duty, isDone) {
+
+    for (let i = 0; i < duties.length; i++) {
+
+        if (duties[i].id === duty.id) {
+            duties[i].isDone = isDone;
+        }
+    }
+
 };
