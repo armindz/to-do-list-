@@ -1,0 +1,109 @@
+body {
+    width: 100%;
+    background-image: url("/img/bgr/greenbgr.png");
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+#heading {
+    position: relative;
+    display: block;
+    top: 30px;
+    color: #333;
+    font-family: Bubbler One, 'Courier New', Courier;
+    text-align: center;
+    font-size: 3em;
+}
+
+.mainContainer {
+    position: absolute;
+    display: flex;
+    top: 30%;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+}
+
+.container1 {
+    background-color: rgba(226, 226, 226, 0.815);
+    width: 500px;
+    border-radius: 10px;
+    box-shadow: #555 7px 7px 20px;
+    background: radial-gradient(circle, rgba(129, 129, 129, 1) 0%, rgba(255, 255, 255, 0.8855917366946778) 0%, rgba(230, 230, 230, 0.7315301120448179) 100%);
+    padding: 20px 5px 50px 0px;
+}
+
+.inputContainer {
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+
+.inputContainer input[type="text"] {
+    position: relative;
+    border-radius: 10px;
+    width: 350px;
+    height: 25px;
+    display: inline-block;
+    margin: 10px;
+    outline-style: none;
+    border: initial;
+    font-family: Bubbler One, Verdana;
+    box-shadow: 3px 3px 20px rgb(150, 150, 150);
+}
+
+.container1 #submitBtn {
+    position: relative;
+    border-radius: 10px;
+    width: 100px;
+    height: 25px;
+    outline-style: none;
+    background-color: powderblue;
+    font-family: Bubbler One, Verdana;
+    font-size: 1em;
+    box-shadow: 3px 3px 20px rgb(150, 150, 150);
+}
+
+#list {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 50px;
+    padding: 30px;
+}
+
+.dutyName {
+    position: relative;
+    display: inline-block;
+    width: 60%;
+    height: 40px;
+    margin: 10px;
+    font-family: Bubbler One, Verdana;
+    color: #888;
+    border-bottom: rgba(238, 255, 247, 0.452) 2px groove;
+}
+
+.isDoneBtn {
+    display: inline-block;
+    position: relative;
+    width: 30px;
+    border-radius: 50%;
+    height: 30px;
+    left: 20px;
+    margin: 5px;
+    top: 15px;
+    outline-style: none;
+}
+
+.removeBtn {
+    display: inline-block;
+    position: relative;
+    width: 30px;
+    border-radius: 50%;
+    height: 30px;
+    left: 40px;
+    margin: 5px;
+    top: 15px;
+    outline-style: none;
+}
