@@ -61,12 +61,14 @@ function markProcess(idOfDuty) {
 
     let duty = getDutyById(idOfDuty);
 
-    if (duty.isDone === 0) { // !duty.isDone
+    if (duty.isDone == 0) { // !duty.isDone
         duty.do();
         document.getElementsByClassName("isDoneBtn")[idOfDuty].src = "/img/icon/true.png";
+        console.log(duty.isDone);
     } else {
         duty.undo();
         document.getElementsByClassName("isDoneBtn")[idOfDuty].src = "/img/icon/false.png";
+        console.log(duty.isDone);
     }
 
 };
