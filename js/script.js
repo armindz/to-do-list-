@@ -44,6 +44,7 @@ function createTask(name) {
 
     let task = new Task(name, 0, generateTaskId());
     addToListOfTasks(task);
+    document.forms["inputForm"].reset(); // clear input form on button click
     console.log("Adding task : " + task.id);
 
     return task;
@@ -51,7 +52,7 @@ function createTask(name) {
 
 function displayData(task) { // inject task name and functions in HTML
 
-    document.getElementById("list").innerHTML += '<h3 class="taskName" property="' + task.id + '">' + task.name + "</h3>";
+    document.getElementById("list").innerHTML += '<h3 class="taskName" property="' + task.id + '" onclick="markProcess(' + task.id + ');">' + task.name + "</h3>";
     document.getElementById("list").innerHTML += '<img class="isDoneBtn" property="' + task.id + '" src="/img/icon/false.png" onclick="markProcess(' + task.id + ');"></img>';
     document.getElementById("list").innerHTML += '<img class="removeBtn" property="' + task.id + '" src="/img/icon/garbageIcon.png" onclick="deleteContent(' + task.id + ');"></img>';
 
@@ -66,12 +67,15 @@ function markProcess(idOfTask) {
         task.do();
         // find button element based on it's id in property & change img
         document.querySelector('[class="isDoneBtn"][property="' + task.id + '"]').src = "/img/icon/true.png"
-
+            // find task name element based on it's id in property & strikethrough text
+        document.querySelector('[class="taskName"][property="' + task.id + '"]').style.textDecoration = "line-through";
 
     } else {
         task.undo();
         // find button element based on it's id in property & change img
         document.querySelector('[class="isDoneBtn"][property="' + task.id + '"]').src = "/img/icon/false.png";
+        // find task name element based on it's id in property & remove strikethrough on text
+        document.querySelector('[class="taskName"][property="' + task.id + '"]').style.textDecoration = "none";
 
 
     }

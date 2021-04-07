@@ -45,13 +45,15 @@ body {
     position: relative;
     border-radius: 10px;
     width: 350px;
-    height: 25px;
+    height: 30px;
     left: 10px;
     display: inline-block;
     margin: 10px;
     outline-style: none;
     border: initial;
     font-family: Bubbler One, Verdana;
+    background-color: rgba(255, 255, 255, 0.637);
+    font-size: 1em;
     box-shadow: 3px 3px 20px rgb(150, 150, 150);
 }
 
@@ -60,7 +62,7 @@ body {
     border-radius: 10px;
     width: 80px;
     left: 20px;
-    height: 25px;
+    height: 30px;
     outline-style: none;
     background-color: rgba(160, 160, 160, 0.904);
     font-family: Bubbler One, Verdana;
@@ -96,6 +98,7 @@ body {
 }
 
 .taskName:hover {
+    cursor: pointer;
     transition: ease-in 100ms;
     transform: scale(1.05);
 }
