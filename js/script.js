@@ -1,5 +1,5 @@
-// Duty obj
-let Duty = function(name, isDone, id) {
+// Task obj
+let Task = function(name, isDone, id) {
 
     this.id = id;
     this.name = name;
@@ -17,22 +17,22 @@ let Duty = function(name, isDone, id) {
 }
 
 
-let duties = [];
+let tasks = [];
 
 
 function fetchInputContent() {
 
     let textInput = document.getElementById("name").value;
-    duty = createDuty(textInput);
-    displayData(duty);
+    task = createTask(textInput);
+    displayData(task);
 };
 
-function generateDutyId() { // generating dutyId based on last stored duty's id in array
+function generateTaskId() { // generating taskId based on last stored task's id in array
 
     let id = 0;
 
-    if (duties.length != 0) {
-        id = duties[duties.length - 1].id;
+    if (tasks.length != 0) {
+        id = tasks[tasks.length - 1].id;
         id++;
         console.log(id);
     }
@@ -40,109 +40,96 @@ function generateDutyId() { // generating dutyId based on last stored duty's id 
     return id;
 };
 
-function createDuty(name) {
+function createTask(name) {
 
-    let duty = new Duty(name, 0, generateDutyId());
-    addToListOfDuties(duty);
-    console.log("Adding duty : " + duty.id);
+    let task = new Task(name, 0, generateTaskId());
+    addToListOfTasks(task);
+    console.log("Adding task : " + task.id);
 
-    return duty;
+    return task;
 };
 
-function displayData(duty) { // inject duty name and functions in HTML
+function displayData(task) { // inject task name and functions in HTML
 
-    document.getElementById("list").innerHTML += '<h3 class="dutyName" property="' + duty.id + '">' + duty.name + "</h3>";
-    document.getElementById("list").innerHTML += '<img class="isDoneBtn" property="' + duty.id + '" src="/img/icon/false.png" onclick="markProcess(' + duty.id + ');"></img>';
-    document.getElementById("list").innerHTML += '<img class="removeBtn" property="' + duty.id + '" src="/img/icon/garbageIcon.png" onclick="deleteContent(' + duty.id + ');"></img>';
-
-    if (document.querySelector('[property="' + duty.id + '"]') == duty.id) {
-
-        /*
-        while (document.querySelector('[property="' + duty.id + '"]').getAttribute("class") != "isDoneBtn") {
-
-        }*/
-
-
-    }
-
-    console.log();
-
+    document.getElementById("list").innerHTML += '<h3 class="taskName" property="' + task.id + '">' + task.name + "</h3>";
+    document.getElementById("list").innerHTML += '<img class="isDoneBtn" property="' + task.id + '" src="/img/icon/false.png" onclick="markProcess(' + task.id + ');"></img>';
+    document.getElementById("list").innerHTML += '<img class="removeBtn" property="' + task.id + '" src="/img/icon/garbageIcon.png" onclick="deleteContent(' + task.id + ');"></img>';
 
 };
 
 
-function markProcess(idOfDuty) {
+function markProcess(idOfTask) {
 
-    let duty = getDutyById(idOfDuty);
+    let task = getTaskById(idOfTask);
 
-    if (!duty.isDone) { // duty.isDone == 0
-        duty.do();
+    if (!task.isDone) { // task.isDone == 0
+        task.do();
         // find button element based on it's id in property & change img
-        document.querySelector('[class="isDoneBtn"][property="' + duty.id + '"]').src = "/img/icon/true.png"
+        document.querySelector('[class="isDoneBtn"][property="' + task.id + '"]').src = "/img/icon/true.png"
 
 
     } else {
-        duty.undo();
+        task.undo();
         // find button element based on it's id in property & change img
-        document.querySelector('[class="isDoneBtn"][property="' + duty.id + '"]').src = "/img/icon/false.png";
+        document.querySelector('[class="isDoneBtn"][property="' + task.id + '"]').src = "/img/icon/false.png";
 
 
     }
     // apply changes to list
-    updateIsDoneInListOfDuties(duty, duty.isDone);
+    updateIsDoneInListOfTasks(task, task.isDone);
 
 };
 
 
-function getDutyById(dutyId) {
+function getTaskById(taskId) {
 
-    for (let i = 0; i < duties.length; i++) {
+    for (let i = 0; i < tasks.length; i++) {
 
-        if (duties[i].id === dutyId) {
-            return duties[i];
+        if (tasks[i].id === taskId) {
+            return tasks[i];
         }
 
     }
 };
 
-function addToListOfDuties(duty) {
+function addToListOfTasks(task) {
 
-    duties.push(duty);
+    tasks.push(task);
 
 };
 
-function fetchListOfDuties() {
+function fetchListOfTasks() {
 
-    return duties;
+    return tasks;
 };
 
-function removeFromListOfDuties(duty) {
+function removeFromListOfTasks(task) {
 
-    for (let i = 0; i < duties.length; i++) {
+    for (let i = 0; i < tasks.length; i++) {
 
-        if (duties[i].id === duty.id) {
-            duties.splice(i, 1);
+        if (tasks[i].id === task.id) {
+            tasks.splice(i, 1);
         }
     }
 };
 
-function deleteContent(dutyId) {
+function deleteContent(taskId) {
 
     // delete everything related to specific property until it's null
-    while (document.querySelector('[property="' + dutyId + '"]') != null) {
+    while (document.querySelector('[property="' + taskId + '"]') != null) {
 
-        document.querySelector('[property="' + dutyId + '"]').remove();
+        document.querySelector('[property="' + taskId + '"]').remove();
     }
 
-    removeFromListOfDuties(getDutyById(dutyId));
+    removeFromListOfTasks(getTaskById(taskId));
 };
 
-function updateIsDoneInListOfDuties(duty, isDone) {
+function updateIsDoneInListOfTasks(task, isDone) {
 
-    for (let i = 0; i < duties.length; i++) {
+    for (let i = 0; i < tasks.length; i++) {
 
-        if (duties[i].id === duty.id) {
-            duties[i].isDone = isDone;
+        if (tasks[i].id === task.id) {
+            tasks[i].isDone = isDone;
         }
     }
 
