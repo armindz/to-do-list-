@@ -15,10 +15,10 @@
         <div class="container1">
 
             <div class="inputContainer">
-                <form id="inputForm">
+                <form id="inputForm" onsubmit="return false">
                     <input id="name" type="text" placeholder="What has to be done?" name="name"></input>
 
-                    <button id="submitBtn" type="button" onclick="fetchInputContent();" name="submitBtn">Add to list</button>
+                    <button id="submitBtn" type="submit" onclick="fetchInputContent();" name="submitBtn">Add to list</button>
                 </form>
             </div>
 
